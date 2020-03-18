@@ -1,0 +1,48 @@
+<~! def year "<~ now yyyy ~>" ~>
+<~! def date "<~ now yyyyMMdd ~>" ~>
+
+<~! static_counter build_counter ~>
+<~! def build "<~ build_counter ~>" ~>
+<~! def major 1 ~>
+<~! def minor 0 ~>
+<~! def patch 0 ~>
+<~! def version "<~major~>.<~minor~>.<~patch~>" ~>
+<~! def file_version "<~major~>.<~minor~>.<~build~>.<~patch~>" ~>
+<~~ if eq <~build_type~> "preview" ~>
+  <~! def full_version "<~major~>.<~minor~>.<~patch~>-preview-<~date~>-<~build~>" ~>
+<~~ else ~>
+  <~! def full_version "<~major~>.<~minor~>.<~patch~>" ~>
+<~~ endif ~>
+
+<~# accept following arguments: proj_name, proj_desc ~>
+<~~ def_block csproj_body ~>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ApplicationIcon/>
+    <Win32Resource/>
+    <Description>GeminiLab Corelib. <~proj_desc~></Description>
+    <Authors>Gemini Laboratory</Authors>
+    <Company>Gemini Laboratory</Company>
+    <Product>GeminiLab.Core2</Product>
+    <AssemblyVersion><~version~></AssemblyVersion>
+    <Copyright>Copyright © Gemini Laboratory 2017 - <~year~></Copyright>
+    <FileVersion><~file_version~></FileVersion>
+    <Version><~full_version~></Version>
+    <LangVersion>8.0</LangVersion>
+    <Configurations>Develop;Preview;Release</Configurations>
+    <OutputPath>..\..\bin\$(Configuration)\</OutputPath>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Preview' Or '$(Configuration)'=='Release'">
+    <Optimize>true</Optimize>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageOutputPath>..\..\bin\package\<~full_version~></PackageOutputPath>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/GeminiLab/GeminiLab.Core2/</PackageProjectUrl>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\keys\geminilab.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+<~~ end_def_block ~>

@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ApplicationIcon/>
+    <Win32Resource/>
+    <Description>GeminiLab Corelib. This library contains the getopt function.</Description>
+    <Authors>Gemini Laboratory</Authors>
+    <Company>Gemini Laboratory</Company>
+    <Product>GeminiLab.Core2</Product>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <Copyright>Copyright © Gemini Laboratory 2017 - 2020</Copyright>
+    <FileVersion>1.0.244.0</FileVersion>
+    <Version>1.0.0</Version>
+    <LangVersion>8.0</LangVersion>
+    <Configurations>Develop;Preview;Release</Configurations>
+    <OutputPath>..\..\bin\$(Configuration)\</OutputPath>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Preview' Or '$(Configuration)'=='Release'">
+    <Optimize>true</Optimize>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageOutputPath>..\..\bin\package\1.0.0</PackageOutputPath>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/GeminiLab/GeminiLab.Core2/</PackageProjectUrl>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\keys\geminilab.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="GeminiLab.Core2" Version="1.0.0" />
+  </ItemGroup>
+</Project>

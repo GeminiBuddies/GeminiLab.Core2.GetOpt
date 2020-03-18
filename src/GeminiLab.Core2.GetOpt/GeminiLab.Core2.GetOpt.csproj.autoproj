@@ -1,0 +1,9 @@
+<~! def proj_name GeminiLab.Core2.GetOpt ~>
+<~! def proj_desc "This library contains the getopt function." ~>
+<Project Sdk="Microsoft.NET.Sdk">
+  <~~ ref_block csproj_body ~>
+  
+  <ItemGroup>
+    <PackageReference Include="GeminiLab.Core2" Version="1.0.0" />
+  </ItemGroup>
+</Project>
