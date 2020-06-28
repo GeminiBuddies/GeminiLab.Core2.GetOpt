@@ -1,0 +1,12 @@
+path_classifiers:
+  test:
+    - exclude: /
+    - XUnitTester
+    - Exam
+extraction:
+  csharp:
+    index:
+      solution:
+        - GeminiLab.Core2.GetOpt.sln
+      dotnet:
+        version: 3.1.301
